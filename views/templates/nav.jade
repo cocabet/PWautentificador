@@ -11,8 +11,6 @@ nav(class="navbar navbar-default")
       ul(class="nav navbar-nav navbar-right")
         if !isAuthenticated
           li
-            a(href="http://localhost:3000/auth/signup")= 'Registrarse'
-          li
             a(href="http://localhost:3000/auth/signin")= 'Iniciar Sesión'
         if isAuthenticated
           li(class="dropdown")

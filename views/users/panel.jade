@@ -2,36 +2,112 @@ extends ../templates/default
 
 block content
   div(class="container-fluid")
-        div(class="row")
-            div(class="col-md-2 col-sm-4 sidebar1")
-                div(class="logo")
-                    img(src="http://lorempixel.com/output/people-q-g-64-64-1.jpg" class="img-responsive center-block" alt="Logo")
-                br
-                div(class="left-navigation")
-                    ul(class="list")
-                        h5 
-                          strong= 'Servicios'
-                        li='FTP'
-                        li= 'Correo'
-                        li= 'Banco'
-                        li= 'Transacciones'
+    div(class="row")
+      div(class="col-md-2")
+        label="HOME"
+        ul(class="nav nav-pills nav-stacked")
+          li
+            a(data-toggle="pill" href="#home")="Página principal"
+        label="Servicios"
+        ul(class="nav nav-pills nav-stacked")
+          li
+            a(data-toggle="pill" href="#ftp")="FTP"
+          li
+            a(data-toggle="pill" href="#correo")="Correo"
+          li
+            a(data-toggle="pill" href="#")="Banco"
+        label="Administrador"
+        ul(class="nav nav-pills nav-stacked")
+          li
+            a(href="#" data-toggle="modal" data-target="#modal")="Agregar usuario"
+            
+            if isAuthenticated && user.code === "ADMINISTRADOR"
+              div(class="modal fade" id="modal" role="dialog")
+                div(class="modal-dialog")
+                  div(class="modal-content")
+                    div(class="modal-header")
+                      button(type="button" class="close" data-dismiss="modal") &times;
+                      h4(class="modal-title")="Agregar Usuario"
+                    div(class="modal-body")
+                      
+                      form(method='post' action='http://localhost:3000/auth/signup' )
+                        
+                        div(class='form-group')
+                          label(for='nombre')= 'Nombre'
+                          input(type='text' name='nombre' id='nombre' placeholder='Nombre' class='form-control')
+                        div(class='form-group')
+                          label(for='apellidos')= 'Apellidos'
+                          input(type='text' name='apellidos' id='apellidos' placeholder='Apellidos' class='form-control')
+                        div(class='form-group')
+                          label(for='email')= 'Email'
+                          input(type='email' name='email' id='email' placeholder='Correo electrónico' class='form-control')
+                        div(class='form-group')
+                          label(for='')= 'Password'
+                          input(type='password' name='password' id='password' placeholder='Contraseña' class='form-control')
+                        div(class="form-group")
+                          label Agregar rol
+                          select(class="form-control" name="rol")
+                            option(value="2")= "Usuario"
+                            option(value="1")= "Administrador"
+                        div(class="form-group")
+                          label Servicios
+                          br
+                          input(type='checkbox' checked='' name='a')
+                          | FTP
+                          br
+                          input(type='checkbox' name='b')
+                          | Correo
+                          br
+                          input(type='checkbox' name='c')
+                          | Banco
+                          br
+                          input(type='checkbox' name='d')
+                          | Transacciones
 
-                    br
 
-                    ul(class="list")
-                        h5
-                          strong= 'HOBBIES'
-                        li= 'Hiking'
-                        li= 'Rafting'
-                        li= 'Badminton'
-                        li= 'Tennis'
-                        li= 'Sketching'
-                        li= 'Horse Riding'
-                    
-               
-            div(class="col-md-10 col-sm-8 main-content")
-            <!--Main content code to be written here --> 
-            h1='FEEDBACK APPRECIATED! :)'
-            h3= 'P.S.: For side navbar with dropdown menu, you may refer this snippet: http://bootsnipp.com/user/snippets/kWPoW'
+                        button(type='submit' class='btn btn-succes')= 'Agregar usuario'
+                    div(class="modal-footer")
+                      
+                      button(type="button" class="btn btn-danger" data-dismiss="modal")="Close"
+            
+            if isAuthenticated && user.code === "USUARIO"
+              div(class="modal fade" id="modal" role="dialog")
+                div(class="modal-dialog")
+                  div(class="modal-content")
+                    div(class="modal-header")
+                      button(type="button" class="close" data-dismiss="modal") &times;
+                      h4(class="modal-title")="No eres ADMINISTRADOR"
+                    div(class="modal-body")
+                      label No puedes acceder a este servicio, no tienes provilegios de Administrador
+
+                    div(class="modal-footer")
+                      button(type="button" class="btn btn-danger" data-dismiss="modal")="Close"
+          
+          li
+            a(data-toggle="pill" href="#")="Agregar Rol"
+          li
+            a(data-toggle="pill" href="#")="Agregar Servicio"
+      div(class="col-md-9")
+        div(class="tab-content")
+          div(id="home" class="tab-pane fade in active")
+            h3= 'Bienvenido ' + user.nombre + ' tu eres : ' + user.code
+            p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          div(id="ftp" class="tab-pane fade")
+            h3 FTP
+            p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          div(id="correo" class="tab-pane fade")
+            h3 Correo
+            p
+            | Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+      
+      div(class="clearfix visible-lg")
+      
+      
+    
+        
+
         
  

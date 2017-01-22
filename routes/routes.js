@@ -6,10 +6,13 @@ var AuthMiddleware = require('.././middleware/auth');
 
 router.get('/',Ctrls.HomeCtrl.index);
 
-//Rutas de usuario
+//Rutas de servicios de globales
 router.get('/user',Ctrls.UserCtrl.getUser);
 router.get('/service',Ctrls.UserCtrl.getService);
-router.get('/auth/signup',Ctrls.UserCtrl.getSignUp);
+router.get('/rol',Ctrls.UserCtrl.getRol);
+
+//Rutas de usuario
+//router.get('/auth/signup',Ctrls.UserCtrl.getSignUp);
 router.post('/auth/signup',Ctrls.UserCtrl.postSignUp);
 router.get('/auth/signin',Ctrls.UserCtrl.getSignIn);
 

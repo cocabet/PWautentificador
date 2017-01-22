@@ -3,11 +3,13 @@ html
   head
     title= title
     meta(charset='utf-8')
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
-    script(src='/javascripts/jquery.js')
-    script(src='/javascripts/bootstrap.min.js')
-    link(rel='stylesheet', href='/stylesheets/lateral.css')
   body
     include nav
     block content
+  
+  script(src='/javascripts/jquery.js')
+  script(src='/javascripts/bootstrap.min.js')
+  script(src='/javascripts/main.js')

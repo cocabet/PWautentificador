@@ -1,0 +1,11 @@
+div(class='panel panel-default')
+  div(class='panel-heading')= 'Iniciar sesión'
+      div(class='panel-body')
+        form(method='post' action='http://localhost:3000/auth/signin' )
+          div(class='form-group')
+            label(for='email')= 'Email'
+            input(type='email' name='username'  placeholder='Correo electrónico' class='form-control')
+          div(class='form-group')
+            label(for='')= 'Password'
+            input(type='password' name='password' placeholder='Contraseña' class='form-control')
+        

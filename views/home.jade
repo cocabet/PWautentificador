@@ -3,4 +3,4 @@ extends templates/default
 block content
   h1= 'Pagina de inicio'
   if isAuthenticated
-    p= 'Bienvenido' + user.nombre
+    p= 'Bienvenido ' + user.nombre + 'tu eres :' + user.code
